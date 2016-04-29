@@ -4,9 +4,9 @@ services:
   - docker
 
 before_install:
-- docker build -t ponyc-arch `pwd`/tools/archlinux/Dockerfile
-- docker build -t ponyc-ubuntu `pwd`/tools/ubuntu/Dockerfile
-- docker build -t ponyc-red-hat `pwd`/tools/red-hat/Dockerfile
+- docker build -t ponyc-arch /home/travis/build/Jbbouille/try-ponyc-release/tools/archlinux/Dockerfile
+- docker build -t ponyc-ubuntu /home/travis/build/Jbbouille/try-ponyc-release/tools/ubuntu/Dockerfile
+- docker build -t ponyc-red-hat /home/travis/build/Jbbouille/try-ponyc-release/tools/red-hat/Dockerfile
 
 script:
 - docker run ponyc-arch
