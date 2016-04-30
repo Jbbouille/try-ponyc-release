@@ -5,6 +5,7 @@ env:
 services:
 - docker
 before_install:
+- sudo apt-get install -o Dpkg::Options::="--force-confold" --force-yes -y docker-engine
 - chmod u+x tools/build.sh
 script:
 - echo 'sucess'
