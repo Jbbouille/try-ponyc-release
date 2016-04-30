@@ -7,15 +7,7 @@ services:
 before_install:
 - chmod u+x tools/build.sh
 script:
-- git tag v$PONY_VERSION
-- eval "$(ssh-agent -s)"
-- pwd
-- cd .. && ls -la
-- cd ../.. && ls -la
-- chmod 600 .travis/deploy_key.pem
-- ssh-add .travis/deploy_key.pem
-- git remote add deploy DEPLOY_REPO_URI_GOES_HERE
-- git push --tags
+- echo 'sucess'
 deploy:
   provider: releases
   api_key:
@@ -25,4 +17,10 @@ deploy:
     branch: release/0.X.X
     tags: true
 after_success:
+- git tag v$PONY_VERSION
+- eval "$(ssh-agent -s)"
+- chmod 600 .travis/deploy_key.pem
+- ssh-add .travis/deploy_key.pem
+- git remote add deploy https://github.com/Jbbouille/try-ponyc-release.git
+- git push --tags
 - tools/build.sh
