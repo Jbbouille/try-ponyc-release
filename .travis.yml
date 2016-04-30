@@ -1,11 +1,17 @@
 sudo: required
+env:
+  global:
+    - PONY_VERSION=$(cat /home/travis/build/Jbbouille/try-ponyc-release/PONY_VERSION
 services:
 - docker
 before_install:
 - chmod u+x tools/build.sh
 script:
-- export PONY_VERSION=$(cat /home/travis/build/Jbbouille/try-ponyc-release/PONY_VERSION
 - git tag v$PONY_VERSION
+- eval "$(ssh-agent -s)"
+- chmod 600 .travis/deploy_key.pem
+- ssh-add .travis/deploy_key.pem
+- git remote add deploy DEPLOY_REPO_URI_GOES_HERE
 - git push --tags
 deploy:
   provider: releases

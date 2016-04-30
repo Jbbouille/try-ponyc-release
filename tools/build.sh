@@ -1,7 +1,6 @@
 #!/bin/sh
 
 if [ $TRAVIS_BRANCH == 'release/'* ]; then
-	export PONY_VERSION=$(cat /home/travis/build/Jbbouille/try-ponyc-release/PONY_VERSION)
 	docker build -t ponyc-arch /home/travis/build/Jbbouille/try-ponyc-release/tools/archlinux/
 	docker build -t ponyc-ubuntu /home/travis/build/Jbbouille/try-ponyc-release/tools/ubuntu/
 	docker build -t ponyc-red-hat /home/travis/build/Jbbouille/try-ponyc-release/tools/red-hat/
