@@ -15,7 +15,6 @@ deploy:
   on:
     repo: Jbbouille/try-ponyc-release
     branch: release/0.X.X
-    tags: true
 after_success:
 - git tag v$PONY_VERSION
 - eval "$(ssh-agent -s)"
