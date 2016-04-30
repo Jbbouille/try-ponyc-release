@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-
+echo $PONY_VERSION
 make config=release -C /home/pony/ponyc
 
 if [[ $? -ne 0 ]]; then
