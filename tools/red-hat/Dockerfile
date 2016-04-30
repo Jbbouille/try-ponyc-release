@@ -25,8 +25,8 @@ RUN curl -L --silent --output /home/pony/github-release.tar.bz2 https://github.c
 	cp /home/pony/bin/linux/amd64/github-release /usr/bin/
 
 RUN git clone https://github.com/Jbbouille/try-ponyc-release.git /home/pony/ponyc
-
 RUN git --git-dir /home/pony/ponyc/.git checkout $TRAVIS_BRANCH
+RUN git --git-dir /home/pony/ponyc/.git reset --hard origin/$TRAVIS_BRANCH
 
 COPY main.sh /home/pony/
 
