@@ -2,7 +2,6 @@ sudo: required
 env:
   global:
     - PONY_VERSION=$(cat /home/travis/build/Jbbouille/try-ponyc-release/VERSION)
-    - TRAVIS_BRANCH=$TRAVIS_BRANCH
 services:
 - docker
 before_install:
