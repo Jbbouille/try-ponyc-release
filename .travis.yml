@@ -1,14 +1,16 @@
 sudo: required
-
 services:
-  - docker
-
+- docker
 before_install:
-- docker build -t ponyc-arch /home/travis/build/Jbbouille/try-ponyc-release/tools/archlinux/
-- docker build -t ponyc-ubuntu /home/travis/build/Jbbouille/try-ponyc-release/tools/ubuntu/
-- docker build -t ponyc-red-hat /home/travis/build/Jbbouille/try-ponyc-release/tools/red-hat/
-
+- chmod u+x tools/build.sh
 script:
-- docker run ponyc-arch
-- docker run ponyc-ubuntu
-- docker run ponyc-red-hat
+deploy:
+  provider: releases
+  api_key:
+    secure: ebTpcPHIOGd58wjZ0rm7GwbYQdqP8jL6sN9PuIRxMkndpP6y1997Tvq9DPr95Pkr6f4/oV+/PO1y8YOmZizvAEazOsmZ6rJHCf36frCDE178OTOwjRRgS7haaNKxYsV9Cpa0HHreLcN4w9AlpKdT0NjD6dFIMXMoOhXggercrG6xYs0lRKQgfKkBra80gEKdSJf0uFHJlD+n1Qpc9GRrq+YZ7uAPjdGyOMQmOXKB3uCqHJGQ7pFMFuqj/ya+an1qfdiQe0RFigXHdQCbgXm6xI2yMx9IABydfKuRGfifiwQQAWV9DOyWg9OMDvDuGu/z1qZzJ/VHQGMrCc6ZrEFJb/w3aIqgtLnL6Fu3PKIKHpdExnH2aylIPAVh/Hb4OAg3Jjfekm/z0/vORp18uaeVSJbL71lVeAKujlhtoiKuA267nVcnJXJZfvjkmCHTJ3tIi5aLyx7DqjThCDrunCex5q+cNny700CRbEr0CMvMQhvBL8EtDNbaa48o3Q2YRrl+ajpEBQ5RVtf2ePA+rJNIXsc35Z7TzR2gxRYSz1wRpdQypf5FQOD8aOncP9D7Q1YXRKtIPZzikciZSSewwZaCXtUI1bcBHOcOTykwTqGdeMedZDiMAMM5nCRTxuzF6/SLTP0Gl83AlIp4bKK4OFrJRn9u2vBM6G1yz8AL3etyv2U=
+  on:
+    repo: Jbbouille/try-ponyc-release
+    branch: release/0.X.X
+	tags: true
+after_install:
+- tools/build.sh

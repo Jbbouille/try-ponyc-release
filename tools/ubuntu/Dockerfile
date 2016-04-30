@@ -9,7 +9,9 @@ RUN apt-get update && \
 
 RUN mkdir /home/pony
 
-RUN git clone https://github.com/ponylang/ponyc.git /home/pony/ponyc
+RUN git clone https://github.com/Jbbouille/try-ponyc-release.git /home/pony/ponyc
+
+RUN git checkout $TRAVIS_BRANCH
 
 COPY main.sh /home/pony/
 
