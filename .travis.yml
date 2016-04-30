@@ -4,6 +4,7 @@ services:
 before_install:
 - chmod u+x tools/build.sh
 script:
+- echo 'test'
 deploy:
   provider: releases
   api_key:
