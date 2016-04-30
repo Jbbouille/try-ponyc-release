@@ -4,7 +4,9 @@ services:
 before_install:
 - chmod u+x tools/build.sh
 script:
-- echo 'test'
+- export PONY_VERSION=$(cat /home/travis/build/Jbbouille/try-ponyc-release/PONY_VERSION
+- git tag v$PONY_VERSION
+- git push --tags
 deploy:
   provider: releases
   api_key:

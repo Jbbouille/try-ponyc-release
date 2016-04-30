@@ -4,6 +4,7 @@ ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 ENV GITHUB_TOKEN $GITHUB_TOKEN
 ENV TRAVIS_BRANCH $TRAVIS_BRANCH
+ENV PONY_VERSION $PONY_VERSION
 
 RUN pacman --noconfirm -S pcre2 clang llvm llvm-libs ncurses gcc-libs zlib openssl make gcc ruby git
 

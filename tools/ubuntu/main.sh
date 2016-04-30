@@ -21,8 +21,6 @@ if [[ $HELLO_WORLD != "Hello, world." ]]; then
 	exit 1
 fi
 
-export PONY_VERSION=$(cat /home/pony/ponyc/VERSION)
-
 mkdir -p /home/pony/ponyc-$PONY_VERSION/usr/bin
 mkdir -p /home/pony/ponyc-$PONY_VERSION/usr/lib
 cp /home/pony/ponyc/build/release/ponyc /home/pony/ponyc-$PONY_VERSION/usr/bin
@@ -57,5 +55,5 @@ github-release upload \
     --user Jbbouille \
     --repo try-ponyc-release \
     --tag v$PONY_VERSION \
-    --name "ponyc-fedora" \
+    --name "ponyc-ubuntu" \
     --file ponyc_"$PONY_VERSION"_amd64.deb

@@ -2,7 +2,9 @@ FROM fedora:23
 
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
-ARG TRAVIS_BRANCH
+ENV GITHUB_TOKEN $GITHUB_TOKEN
+ENV TRAVIS_BRANCH $TRAVIS_BRANCH
+ENV PONY_VERSION $PONY_VERSION
 
 RUN dnf update -y && \
     dnf install -y 	ncurses-devel openssl-devel pcre2 git zlib-devel fedora-packager rpmdevtools \
@@ -32,4 +34,4 @@ COPY main.sh /home/pony/
 
 RUN gem install fpm
 
-#ENTRYPOINT sh /home/pony/main.sh
+ENTRYPOINT sh /home/pony/main.sh
