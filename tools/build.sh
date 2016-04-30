@@ -1,7 +1,8 @@
 #!/bin/sh
 
 echo 'before'
-if [ $TRAVIS_BRANCH == 'release/'* ]; then
+echo $TRAVIS_BRANCH
+if [[ $TRAVIS_BRANCH =~ "release/" ]]; then
 	echo 'IN'
 	docker build -t ponyc-arch /home/travis/build/Jbbouille/try-ponyc-release/tools/archlinux/
 	docker build -t ponyc-ubuntu /home/travis/build/Jbbouille/try-ponyc-release/tools/ubuntu/
