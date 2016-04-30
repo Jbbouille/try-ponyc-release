@@ -57,3 +57,7 @@ github-release upload \
     --tag v$PONY_VERSION \
     --name "ponyc-ubuntu" \
     --file ponyc_"$PONY_VERSION"_amd64.deb
+if [[ $? -ne 0 ]]; then
+	echo "Error during the building of Pony"
+	exit 1
+fi

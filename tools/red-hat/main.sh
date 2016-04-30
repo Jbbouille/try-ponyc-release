@@ -57,3 +57,7 @@ github-release upload \
     --tag v$PONY_VERSION \
     --name "ponyc-fedora" \
     --file ponyc-$PONY_VERSION-1.x86_64.rpm
+if [[ $? -ne 0 ]]; then
+	echo "Error during the building of Pony"
+	exit 1
+fi
