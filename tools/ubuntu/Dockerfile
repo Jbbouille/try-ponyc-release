@@ -6,7 +6,7 @@ ARG TRAVIS_BRANCH
 
 RUN apt-get update && \ 
 	apt-get -y 	install build-essential git rubygems ruby-dev \
-            	zlib1g-dev libncurses5-dev libssl-dev libpcre2-16-0 llvm-3.7-dev
+            	zlib1g-dev libncurses5-dev libssl-dev libpcre2-16-0 llvm-3.7-dev curl
 
 RUN mkdir /home/pony
 
