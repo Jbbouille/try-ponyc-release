@@ -8,7 +8,7 @@ before_install:
 - sudo apt-get install -o Dpkg::Options::="--force-confold" --force-yes -y docker-engine
 - chmod u+x tools/build.sh
 script:
-- echo 'sucess'
+- git tag v$PONY_VERSION
 deploy:
   provider: releases
   api_key:
@@ -16,11 +16,6 @@ deploy:
   on:
     repo: Jbbouille/try-ponyc-release
     branch: release/0.X.X
+    tags: true
 after_success:
-- git tag v$PONY_VERSION
-- eval "$(ssh-agent -s)"
-- chmod 600 .travis/deploy_key.pem
-- ssh-add .travis/deploy_key.pem
-- git remote add deploy https://github.com/Jbbouille/try-ponyc-release.git
-- git push --tags
 - bash tools/build.sh
