@@ -2,24 +2,17 @@ sudo: required
 env:
   global:
     - PONY_VERSION=$(cat /home/travis/build/Jbbouille/try-ponyc-release/VERSION)
+    - RELEASE=true
 services:
 - docker
 before_install:
-- sudo apt-get install -o Dpkg::Options::="--force-confold" --force-yes -y docker-engine
-- chmod u+x tools/build.sh
-- git checkout origin/$TRAVIS_BRANCH
-- curl -L --silent --output /home/travis/build/Jbbouille/github-release.tar.bz2 https://github.com/aktau/github-release/releases/download/v0.6.2/linux-amd64-github-release.tar.bz2
-- tar xf /home/travis/build/Jbbouille/github-release.tar.bz2 -C /home/travis/build/Jbbouille/
+- bash tools/install.sh
 script:
-- git tag v$PONY_VERSION
-- git push -q https://$GITHUB_TOKEN@github.com/Jbbouille/try-ponyc-release --tags
-- /home/travis/build/Jbbouille/bin/linux/amd64/github-release release --user Jbbouille --repo try-ponyc-release --tag v$PONY_VERSION --name "Ponyc release draft" --description "Ponyc release draft $PONY_VERSION" --draft
-- bash tools/build.sh
+- bash tools/script.sh
 after_failure:
-- git push origin :refs/tags/v$PONY_VERSION
-- /home/travis/build/Jbbouille/bin/linux/amd64/github-release delete --user Jbbouille --repo try-ponyc-release --tag v$PONY_VERSION
+- bash tools/failure.sh
 after_success:
-- /home/travis/build/Jbbouille/bin/linux/amd64/github-release edit --user Jbbouille --repo try-ponyc-release --tag v$PONY_VERSION --name "Ponyc release" --description "Ponyc release $PONY_VERSION"
+- bash tools/success.sh
 branches:
   only:
     - master
