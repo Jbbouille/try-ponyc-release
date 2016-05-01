@@ -10,17 +10,16 @@ before_install:
 - git checkout origin/$TRAVIS_BRANCH
 - curl -L --silent --output /home/travis/build/Jbbouille/github-release.tar.bz2 https://github.com/aktau/github-release/releases/download/v0.6.2/linux-amd64-github-release.tar.bz2
 - tar xf /home/travis/build/Jbbouille/github-release.tar.bz2 -C /home/travis/build/Jbbouille/
-- cp /home/travis/build/Jbbouille/bin/linux/amd64/github-release /usr/bin/
 script:
 - git tag v$PONY_VERSION
 - git push -q https://$GITHUB_TOKEN@github.com/Jbbouille/try-ponyc-release --tags
-- github-release release --user Jbbouille --repo try-ponyc-release --tag v$PONY_VERSION --name "Ponyc release draft" --description "Ponyc release draft $PONY_VERSION" --draft
+- /home/travis/build/Jbbouille/bin/linux/amd64/github-release release --user Jbbouille --repo try-ponyc-release --tag v$PONY_VERSION --name "Ponyc release draft" --description "Ponyc release draft $PONY_VERSION" --draft
 - bash tools/build.sh
 after_failure:
 - git push origin :refs/tags/v$PONY_VERSION
-- github-release delete --user Jbbouille --repo try-ponyc-release --tag v$PONY_VERSION
+- /home/travis/build/Jbbouille/bin/linux/amd64/github-release delete --user Jbbouille --repo try-ponyc-release --tag v$PONY_VERSION
 after_success:
-- github-release edit --user Jbbouille --repo try-ponyc-release --tag v$PONY_VERSION --name "Ponyc release" --description "Ponyc release $PONY_VERSION"
+- /home/travis/build/Jbbouille/bin/linux/amd64/github-release edit --user Jbbouille --repo try-ponyc-release --tag v$PONY_VERSION --name "Ponyc release" --description "Ponyc release $PONY_VERSION"
 deploy:
   provider: releases
   api_key:
