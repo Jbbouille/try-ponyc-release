@@ -55,7 +55,7 @@ github-release upload \
     --user Jbbouille \
     --repo try-ponyc-release \
     --tag v$PONY_VERSION \
-    --name ponyc_"$PONY_VERSION"_amd64.deb \
+    --name ponyc_"$PONY_VERSION"_x86_64.deb \
     --file ponyc_"$PONY_VERSION"_amd64.deb
 if [[ $? -ne 0 ]]; then
 	echo "Error during the building of Pony"
