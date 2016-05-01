@@ -10,8 +10,10 @@ before_install:
 - git checkout origin/$TRAVIS_BRANCH
 script:
 - git tag v$PONY_VERSION
-- git push --tags
+- git push -q https://$GITHUB_TOKEN@github.com/Jbbouille/try-ponyc-release --tags
 - bash tools/build.sh
+after_failure:
+- git push origin :refs/tags/v$PONY_VERSION
 deploy:
   provider: releases
   api_key:
