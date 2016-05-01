@@ -10,6 +10,7 @@ before_install:
 - git checkout origin/$TRAVIS_BRANCH
 script:
 - git tag v$PONY_VERSION
+- git push --tags
 - bash tools/build.sh
 deploy:
   provider: releases
