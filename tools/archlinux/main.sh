@@ -55,7 +55,7 @@ github-release upload \
     --user Jbbouille \
     --repo try-ponyc-release \
     --tag v$PONY_VERSION \
-    --name "ponyc-archlinux" \
+    --name ponyc-$PONY_VERSION-x86_64.pkg.tar.xz \
     --file ponyc-$PONY_VERSION-1-x86_64.pkg.tar.xz
 if [[ $? -ne 0 ]]; then
 	echo "Error during the building of Pony"

@@ -7,8 +7,10 @@ services:
 before_install:
 - sudo apt-get install -o Dpkg::Options::="--force-confold" --force-yes -y docker-engine
 - chmod u+x tools/build.sh
+- git checkout origin/$TRAVIS_BRANCH
 script:
 - git tag v$PONY_VERSION
+- bash tools/build.sh
 deploy:
   provider: releases
   api_key:
@@ -17,5 +19,3 @@ deploy:
     repo: Jbbouille/try-ponyc-release
     branch: release/0.X.X
     tags: true
-after_success:
-- bash tools/build.sh
