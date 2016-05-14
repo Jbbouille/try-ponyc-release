@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 if [[ $TRAVIS_BRANCH =~ "release/" && $RELEASE == "true" ]]; then
 	git tag v$PONY_VERSION
 	git push -q https://$GITHUB_TOKEN@github.com/Jbbouille/try-ponyc-release --tags
@@ -12,5 +14,4 @@ if [[ $TRAVIS_BRANCH =~ "release/" && $RELEASE == "true" ]]; then
 	docker run -e TRAVIS_BRANCH=$TRAVIS_BRANCH -e GITHUB_TOKEN=$GITHUB_TOKEN -e PONY_VERSION=$PONY_VERSION jbbouille/ponyc-arch
 	docker run -e TRAVIS_BRANCH=$TRAVIS_BRANCH -e GITHUB_TOKEN=$GITHUB_TOKEN -e PONY_VERSION=$PONY_VERSION jbbouille/ponyc-ubuntu
 	docker run -e TRAVIS_BRANCH=$TRAVIS_BRANCH -e GITHUB_TOKEN=$GITHUB_TOKEN -e PONY_VERSION=$PONY_VERSION jbbouille/ponyc-fedora
-	exit 0
 fi
