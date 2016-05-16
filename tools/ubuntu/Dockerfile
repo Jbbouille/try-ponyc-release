@@ -3,7 +3,6 @@ FROM ubuntu:xenial
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 ARG TRAVIS_BRANCH
-ARG TRAVIS_COMMIT
 
 RUN apt-get update && \ 
 	apt-get -y 	install build-essential git rubygems ruby-dev \

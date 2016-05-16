@@ -2,6 +2,7 @@ sudo: required
 env:
   global:
     - PONY_VERSION=$(cat /home/travis/build/Jbbouille/try-ponyc-release/VERSION)
+    - PONY_CHANGELOG=$(bash /home/travis/build/Jbbouille/try-ponyc-release/tools/changelog.sh)
     - RELEASE=true
 services:
 - docker

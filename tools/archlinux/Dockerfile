@@ -3,7 +3,6 @@ FROM pritunl/archlinux:latest
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 ARG TRAVIS_BRANCH
-ARG TRAVIS_COMMIT
 
 RUN pacman --noconfirm -S pcre2 clang llvm llvm-libs ncurses gcc-libs zlib openssl make gcc ruby git
 

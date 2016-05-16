@@ -6,7 +6,7 @@
 ## Release process
 - There is a dedicated branch in ponyc repo for each major version of the compiler.
 - Each time a commit is push on these branch it triggers a Travis job that try to build a version of ponyc for each *latest* linux OS families (archlinux, fedora, debian).
-- Build are done in a docker in a container for Linux.
+- Build are done in a docker container for Linux.
 - If a commit with name `Pony Release X.X.X` is push on these branch it will build and release ponyc and push the packages on github release page.
 
 ## Next
