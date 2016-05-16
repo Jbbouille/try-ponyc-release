@@ -10,6 +10,7 @@
 - If a commit with name `Pony Release X.X.X` is push on these branch it will build and release ponyc and push the packages on github release page.
 
 ## Next
+* Improve error messages at for release script
 * Do the same for windows and OS X but without the docker container.
 * Push ponyc builded on OS repository (brew, chocolatey, nuget, apt, pacman, dnf).
 * Try to build a ponyc version package for other platform I386, ARM ?

@@ -3,6 +3,7 @@ FROM fedora:23
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 ARG TRAVIS_BRANCH
+ARG TRAVIS_COMMIT
 
 RUN dnf update -y && \
     dnf install -y 	ncurses-devel openssl-devel pcre2 git zlib-devel fedora-packager rpmdevtools \
